@@ -1,0 +1,600 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Score",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 910493853452984
+		},
+		{
+			"eventType": "variable",
+			"name": "Health",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 149860862357555
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Slime",
+					"sid": 334082065446256,
+					"parameters": {
+						"object": "Reward"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 880204112431702,
+					"parameters": {
+						"variable": "Score",
+						"value": "10"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "txtScore",
+					"sid": 524442214747072,
+					"parameters": {
+						"text": "\"Score: \" & Score"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Reward",
+					"sid": 230351417181822
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 937944216783812,
+					"parameters": {
+						"audio-file": {
+							"path": "coin_1"
+						},
+						"loop": "not-looping",
+						"volume": "10",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 471287213226216
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Slime",
+					"sid": 794859738674217,
+					"parameters": {
+						"object": "Mimic"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 794765755297001,
+					"parameters": {
+						"variable": "Health",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 475541196324693,
+					"parameters": {
+						"variable": "Health",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "HP",
+					"sid": 523474921159461,
+					"parameters": {
+						"width": "(Health/5)*250"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 281469314245912,
+					"parameters": {
+						"audio-file": {
+							"path": "hitmarker_2"
+						},
+						"loop": "not-looping",
+						"volume": "10",
+						"stereo-pan": "0",
+						"tag-optional": "\"Hit\""
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Slime",
+					"sid": 687705224300556,
+					"parameters": {
+						"animation": "\"Hit\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 912691797044333
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 377039826934930,
+					"parameters": {
+						"variable": "Health",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 399025066536043
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "txtGameOver",
+					"sid": 462789322857335,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Slime",
+					"sid": 388471591945794,
+					"behaviorType": "TileMovement",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Slime",
+					"sid": 291715601652696,
+					"parameters": {
+						"animation": "\"Death\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "btnRetry",
+					"sid": 438572973596645,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 710152634610338,
+					"parameters": {
+						"tag": "\"BGM\""
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 181239278261478,
+					"parameters": {
+						"audio-file": {
+							"path": "super-mario-death-sound-sound-effect"
+						},
+						"loop": "not-looping",
+						"volume": "5",
+						"stereo-pan": "0",
+						"tag-optional": "\"Death\""
+					}
+				}
+			],
+			"sid": 532191020660106
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 437000827746126
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "txtScore",
+					"sid": 644452287066686,
+					"parameters": {
+						"text": "\"Score: \" & Score"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 783196919787615,
+					"parameters": {
+						"audio-file": {
+							"path": "re-zero-return-by-death"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"Spawn\""
+					}
+				}
+			],
+			"sid": 359267444471200
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 668096765713323,
+					"parameters": {
+						"variable": "Score",
+						"comparison": 5,
+						"value": "100"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-collisions-enabled",
+					"objectClass": "Slime",
+					"sid": 385480885747446,
+					"parameters": {
+						"collisions": "disabled"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Slime",
+					"sid": 901658861697393,
+					"behaviorType": "TileMovement",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "txtWin",
+					"sid": 327223743986863,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "btnRetry",
+					"sid": 819138726869311,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 954251749368956
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "btnRetry",
+					"sid": 454198863310760
+				}
+			],
+			"actions": [
+				{
+					"id": "reset-global-variables",
+					"objectClass": "System",
+					"sid": 342184099581086,
+					"parameters": {
+						"reset-static": false
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 197401736578182
+				}
+			],
+			"sid": 954989697907898
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 245671305622672
+				}
+			],
+			"actions": [
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 290612264041093,
+					"parameters": {
+						"property-name": "\"border-radius\"",
+						"value": "\"16px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 196602351683598,
+					"parameters": {
+						"property-name": "\"background-color\"",
+						"value": "\"#1e1e2e\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 563051296174775,
+					"parameters": {
+						"property-name": "\"color\"",
+						"value": "\"#00ffcc\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 861262586725610,
+					"parameters": {
+						"property-name": "\"border\"",
+						"value": "\"3px solid 00ffcc\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 450626197505601,
+					"parameters": {
+						"property-name": "\"font-weight\"",
+						"value": "\"bold\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 896471556806796,
+					"parameters": {
+						"property-name": "\"font-size\"",
+						"value": "\"16px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 115244382943556,
+					"parameters": {
+						"property-name": "\"cursor\"",
+						"value": "\"pointer\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 560677965915934,
+					"parameters": {
+						"property-name": "\"transition\"",
+						"value": "\"all 0.2s ease\""
+					}
+				}
+			],
+			"sid": 432466472548314
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 549757764086633,
+					"parameters": {
+						"object": "btnRetry"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 627138745009045,
+					"parameters": {
+						"property-name": "\"background-color\"",
+						"value": "\"#00ffcc\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 469698748599361,
+					"parameters": {
+						"property-name": "\"color\"",
+						"value": "\"#1e1e2e\""
+					}
+				}
+			],
+			"sid": 122762786135141
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 100538051075045,
+					"parameters": {
+						"object": "btnRetry"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 449296665908532,
+					"parameters": {
+						"property-name": "\"background-color\"",
+						"value": "\"#1e1e2e\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "btnRetry",
+					"sid": 718581415330668,
+					"parameters": {
+						"property-name": "\"color\"",
+						"value": "\"#00ffcc\""
+					}
+				}
+			],
+			"sid": 781212875466807
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 303400089518632,
+					"parameters": {
+						"key": 39
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "Slime",
+					"sid": 665031903306872,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				}
+			],
+			"sid": 107129145052427
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 227287009662024,
+					"parameters": {
+						"key": 37
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "Slime",
+					"sid": 648026466280254,
+					"parameters": {
+						"state": "mirrored"
+					}
+				}
+			],
+			"sid": 712312151614549
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ended",
+					"objectClass": "Audio",
+					"sid": 531903578067680,
+					"parameters": {
+						"tag": "\"Spawn\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 336210410070981,
+					"parameters": {
+						"audio-file": {
+							"path": "Pokemon RubySapphireEmerald- Littleroot Town"
+						},
+						"loop": "looping",
+						"volume": "-15",
+						"stereo-pan": "0",
+						"tag-optional": "\"BGM\""
+					}
+				}
+			],
+			"sid": 577603333806698
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Slime",
+					"sid": 798533720740483,
+					"parameters": {
+						"animation": "\"Hit\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Slime",
+					"sid": 166749748610120,
+					"behaviorType": "TileMovement",
+					"parameters": {
+						"state": "enabled"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Slime",
+					"sid": 522753310306780,
+					"parameters": {
+						"animation": "\"Move\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 369830926429507
+		}
+	],
+	"sid": 667622112564657
+}

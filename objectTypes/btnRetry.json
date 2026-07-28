@@ -1,0 +1,9 @@
+{
+	"name": "btnRetry",
+	"plugin-id": "Button",
+	"sid": 509528850632516,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}
