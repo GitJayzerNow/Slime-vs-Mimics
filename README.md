@@ -1,18 +1,19 @@
 # 🟢 Slime Vs. Mimics
 
-A 2D four-directional arcade game built as a academic project for a **Prelim Examination**. Play as a cute little green slime, dodge patrolling Mimic monsters, and collect points to reach a winning score of **100**!
+A fast-paced 2D four-directional arcade game built with **Construct 3**. Take control of a cute little green slime, outmaneuver patrolling Mimic monsters, and collect items to reach a target score of **100** to win!
 
 ---
 
 ## 🎮 Gameplay & Mechanics
 
-* **Player Character:** Control a cute green slime capable of moving in four directions (Up, Down, Left, Right).
-* **Enemy AI:** Patrolling Mimic monsters roam the area to block your path and eliminate you on contact.
-* **Objective:** Collect items/points around the map while avoiding enemy contact.
-* **Win Condition:** Score **100 points** to secure victory!
+* **Player Character:** Control a green slime with smooth four-directional movement (Up, Down, Left, Right).
+* **Patrolling Enemies:** Watch out for Mimic monsters patrolling the area—touching one ends your run!
+* **Objective:** Navigate the map to collect items and boost your score.
+* **Win Condition:** Reach **100 points** to secure victory before getting caught.
 
 ---
 
-## 🎓 Academic Context
+## 🛠️ Built With
 
-This project was created and submitted for the **Prelim Examination** requirement, demonstrating core principles of 2D game development, character movement, patrol AI logic, collision detection, and score management.
+* **Engine:** [Construct 3](https://www.construct.net/)
+* **Logic:** Built using event sheet triggers, custom variables, pathing/patrol behaviors, and collision handling.
